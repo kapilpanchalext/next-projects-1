@@ -6,19 +6,25 @@ import Link from 'next/link';
 import { generatePagination } from '@/app/lib/utils';
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
+  function createPageURL(arg0: number): string {
+    const params = new URLSearchParams("searchParams");
+    params.set('page', "1");
+    return `${"pathname"}?${params.toString()}`;
+  }
+
   // NOTE: Uncomment this code in Chapter 11
 
-  // const allPages = generatePagination(currentPage, totalPages);
+  const allPages = generatePagination(1, totalPages);
 
   return (
     <>
       {/*  NOTE: Uncomment this code in Chapter 11 */}
 
-      {/* <div className="inline-flex">
+      <div className="inline-flex">
         <PaginationArrow
           direction="left"
-          href={createPageURL(currentPage - 1)}
-          isDisabled={currentPage <= 1}
+          href={createPageURL(2 - 1)}
+          isDisabled={2 <= 1}
         />
 
         <div className="flex -space-x-px">
@@ -33,10 +39,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             return (
               <PaginationNumber
                 key={page}
-                href={createPageURL(page)}
+                href={createPageURL(1)}
                 page={page}
                 position={position}
-                isActive={currentPage === page}
+                isActive={1 === page}
               />
             );
           })}
@@ -44,10 +50,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
         <PaginationArrow
           direction="right"
-          href={createPageURL(currentPage + 1)}
-          isDisabled={currentPage >= totalPages}
+          href={createPageURL(1 + 1)}
+          isDisabled={1 >= totalPages}
         />
-      </div> */}
+      </div>
     </>
   );
 }
