@@ -1,0 +1,11 @@
+@mixin navbar--dimension {
+  height: 4rem;
+  width: 100vw;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar {
+  @include navbar--dimension();
+}
