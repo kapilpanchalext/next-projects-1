@@ -1,18 +1,67 @@
 @use "../../styles/abstracts/vars" as *;
 @use "../../styles/abstracts/mixins" as *;
 
-@mixin navbar--dimension {
+@mixin navbar__dimension {
   height: #{$navbar-height};
   width: #{$app-width};
   margin: 0px;
-  padding: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
   border-width: 1px;
   border-style: solid;
   border-color: var(--background-tertiary);
   background: var(--background-secondary);
 }
 
+@mixin navbar__items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backdrop {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 5rem);
+  grid-template-rows: repeat(auto-fill, 1rem);
+}
+
 .navbar {
-  @include navbar--dimension();
+  @include navbar__dimension();
   @include position();
+  @include navbar__items();
+}
+
+.navbar__links {
+  display: none;
+}
+
+.menu-icon {
+  display: flex;
+}
+
+@media(min-width: #{$screen-md}) {
+  .navbar {
+    @include navbar__dimension();
+    @include position();
+    @include navbar__items();
+  }
+  
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .menu-icon {
+    display: none;
+  }
 }
