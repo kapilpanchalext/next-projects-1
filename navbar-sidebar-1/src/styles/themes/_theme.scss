@@ -21,17 +21,9 @@
 
 body,
 :root {
-//   --app-color-white: #{$app-color-white};
-//   --app-color-black: #{$app-color-black};
-//   --app-color-ads: #{$app-color-ads};
-//   --app-color-background-highlight: #{$app-color-light-theme-yellow-10};
-//   --app-color-dark-grey: #{$app-color-neutral-70};
-//   --app-background-dark: #{$app-theme-dark-background-primary};
-//   --app-background-light: #{$app-theme-light-background-primary};
-//   --app-background-light-grey: #{$app-color-neutral-10};
-//   --color-announcement-banner-accent: #{$app-color-light-theme-pink-40};
   background: var(--background-primary);
   color: var(--text-primary);
+  font-family: "Roboto", sans-serif;
 }
 
 .light {

@@ -1,3 +1,5 @@
 @use "../styles/abstracts/vars" as *;
 @use "../styles/base/reset";
 @use "../styles/themes/theme";
+@use "../styles/base/typography";
+@use "../styles/abstracts/mixins.scss" as *;

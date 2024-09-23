@@ -1,12 +1,18 @@
+@use "../../styles/abstracts/vars" as *;
+@use "../../styles/abstracts/mixins" as *;
+
 @mixin navbar--dimension {
-  height: 4rem;
-  width: 100vw;
-  position: relative;
+  height: #{$navbar-height};
+  width: #{$app-width};
   margin: 0px;
   padding: 0px;
-  border: 1px solid white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--background-tertiary);
+  background: var(--background-secondary);
 }
 
 .navbar {
   @include navbar--dimension();
+  @include position();
 }
