@@ -1,19 +1,53 @@
 "use client";
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from "./Navbar.module.scss";
 import Link from 'next/link';
+import NavbarContext from '@/store/NavbarContext';
 
 type Props = {}
 
 const Navbar = (props: Props) => {
-  
+  const { isDisplaySidebar, toggleSidebar } = useContext(NavbarContext);
+  const [isNavbarExtended, setIsNavbarExtended] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 769 && isNavbarExtended) {
+        setIsNavbarExtended(false);
+      }
+    };
+
+    if (window.innerWidth > 769 && isNavbarExtended) {
+      setIsNavbarExtended(false);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isNavbarExtended]);
+
+
+  const toggleIconHandler = () => {
+    if (isDisplaySidebar) {
+      return <span className={`material-symbols-outlined`}>dark_mode</span>
+    } else {
+      return <span className={`material-symbols-outlined`}>light_mode</span>
+    }
+  }
+
+  const openLinksMenuHandler = () => {
+    setIsNavbarExtended((prevResult) => !prevResult);
+  }
+
   return (
     <>
       <div className={styles.backdrop}></div>
-      <header className={styles.navbar}>
-        <span className={`material-symbols-outlined ${styles['menu-icon']}`}>menu</span>
+      <header className={`${styles.navbar} ${isNavbarExtended ? styles['navbar__extended'] : ''}`}>
+        <button className={`${styles['menu-button']}`} onClick={openLinksMenuHandler}><span className={`material-symbols-outlined`}>menu</span></button>
         <h1>Navbar</h1>
-        <nav className={styles.navbar__links}>
+        <nav className={styles['navbar__links']}>
           <Link href="/">Home</Link>
           <Link href="/">Insert</Link>
           <Link href="/">Design</Link>
@@ -23,6 +57,7 @@ const Navbar = (props: Props) => {
           <Link href="/">Review</Link>
           <Link href="/">View</Link>
         </nav>
+        <button className={styles['theme-button']} onClick={toggleSidebar}>{toggleIconHandler()}</button>
       </header>
     </>
   )
