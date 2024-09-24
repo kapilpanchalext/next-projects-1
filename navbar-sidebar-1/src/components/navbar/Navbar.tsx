@@ -46,7 +46,10 @@ const Navbar = (props: Props) => {
       <div className={styles.backdrop}></div>
       <header className={`${styles.navbar} ${isNavbarExtended ? styles['navbar__extended'] : ''}`}>
         <button className={`${styles['menu-button']}`} onClick={openLinksMenuHandler}><span className={`material-symbols-outlined`}>menu</span></button>
-        <h1>Navbar</h1>
+        <div className={styles['navbar__title']}>
+          <Link href="/"><h1>Navbar</h1></Link>
+        </div>
+        
         <nav className={styles['navbar__links']}>
           <Link href="/">Home</Link>
           <Link href="/">Insert</Link>

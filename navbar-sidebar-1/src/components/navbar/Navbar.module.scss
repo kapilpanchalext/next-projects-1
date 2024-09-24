@@ -7,12 +7,13 @@
   margin: 0px;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   border-width: 1px;
   border-style: solid;
   border-color: var(--background-tertiary);
   background: var(--background-secondary);
+  z-index: #{$z-index-main-header};
 }
 
 @mixin navbar__items {
@@ -52,7 +53,6 @@
   align-items: center;
 
   .navbar__links {
-    visibility: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,11 +61,11 @@
 }
 
 .navbar__links {
-  visibility: hidden;
+  display: none;
 }
 
 .menu-button {
-  visibility: visible;
+  display: flex;
   @include button__reset();
 }
 
@@ -73,15 +73,14 @@
   @include button__reset();
 }
 
+.navbar__title {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 @media(min-width: #{$screen-md}) {
-  .navbar {
-    @include navbar__dimension();
-    @include position();
-    @include navbar__items();
-  }
 
   .navbar__links {
-    visibility: visible;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -89,6 +88,15 @@
   }
 
   .menu-button {
-    visibility: hidden;
+    display: none;
+  }
+
+  .navbar__title {
+    margin-left: 2rem;
+    margin-right: 1rem;
+  }
+
+  .theme-button {
+    margin-right: 2rem;
   }
 }
