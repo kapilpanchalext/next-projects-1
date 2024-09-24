@@ -2,7 +2,7 @@
 @use "../../styles/abstracts/mixins" as *;
 
 @mixin sidebar__dimension {
-  height: 80vh;
+  height: #{$viewport-height};
   width: #{$sidebar-width};
   margin: 0px;
   padding-top: 0;
