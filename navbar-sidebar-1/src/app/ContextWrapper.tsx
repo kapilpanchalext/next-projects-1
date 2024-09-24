@@ -1,5 +1,5 @@
 "use client";
-import NavbarContext from '@/store/NavbarContext';
+import NavigationContext from '@/store/NavigationContext';
 import React, { ReactNode, useContext } from 'react';
 
 type Props = {
@@ -7,11 +7,11 @@ type Props = {
 }
 
 const ContextWrapper = ({children}: Props) => {
-  const { isDisplaySidebar } = useContext(NavbarContext);
+  const { isTheme } = useContext(NavigationContext);
 
   return (
     <>
-      <html lang="en" className={`${isDisplaySidebar ? "light" : "dark"}`}>
+      <html lang="en" className={`${isTheme ? "light" : "dark"}`}>
         {children}
       </html>
     </>

@@ -3,7 +3,7 @@
 
 @mixin navbar__dimension {
   height: #{$navbar-height};
-  width: #{$app-width};
+  width: #{$viewport-width};
   margin: 0px;
   padding-top: 0;
   padding-bottom: 0;
@@ -47,9 +47,9 @@
 }
 
 .navbar__extended {
-  min-height: 50vh;
+  min-height: 70vh;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
   .navbar__links {
@@ -69,6 +69,11 @@
   @include button__reset();
 }
 
+.sidebar-button {
+  display: flex;
+  @include button__reset();
+}
+
 .theme-button {
   @include button__reset();
 }
@@ -79,7 +84,6 @@
 }
 
 @media(min-width: #{$screen-md}) {
-
   .navbar__links {
     display: flex;
     align-items: center;
