@@ -28,7 +28,6 @@ const Navbar = (props: Props) => {
     };
   }, [isNavbarExtended]);
 
-
   const toggleIconHandler = () => {
     if (isTheme) {
       return <span className={`material-symbols-outlined`}>dark_mode</span>
@@ -44,7 +43,7 @@ const Navbar = (props: Props) => {
   return (
     <>
       <div className={styles.backdrop}></div>
-      <header className={`${styles.navbar} ${isNavbarExtended ? styles['navbar__extended'] : ''}`}>
+      <header className={`${styles['navbar']} ${isNavbarExtended ? styles['navbar__extended'] : ''}`}>
         <button className={`${styles['sidebar-button']}`} onClick={toggleSidebar}><span className={`material-symbols-outlined`}>menu</span></button>
         <div className={styles['navbar__title']}>
           <Link href="/"><h1>Navbar</h1></Link>
