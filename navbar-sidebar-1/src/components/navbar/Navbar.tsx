@@ -46,7 +46,7 @@ const Navbar = (props: Props) => {
       <header className={`${styles['navbar']} ${isNavbarExtended ? styles['navbar__extended'] : ''}`}>
         <button className={`${styles['sidebar-button']}`} onClick={toggleSidebar}><span className={`material-symbols-outlined`}>menu</span></button>
         <div className={styles['navbar__title']}>
-          <Link href="/"><h1>Navbar</h1></Link>
+          <Link href="/"><h1>SchoolBell</h1></Link>
         </div>
         
         <nav className={styles['navbar__links']}>

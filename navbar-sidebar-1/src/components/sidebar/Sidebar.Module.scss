@@ -27,6 +27,8 @@
 .sidebar {
   @include sidebar__dimension();
   @include sidebar__items();
+  @include schoolbell__font();
+  @include link__fonts();
 
   .sidebar__links {
     display: flex;

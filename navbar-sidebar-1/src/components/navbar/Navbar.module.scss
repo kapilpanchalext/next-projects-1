@@ -44,6 +44,8 @@
   @include navbar__dimension();
   @include position();
   @include navbar__items();
+  @include schoolbell__font();
+  @include link__fonts();
 }
 
 .navbar__extended {
@@ -79,6 +81,7 @@
 }
 
 .navbar__title {
+  @include schoolbell__font();
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
