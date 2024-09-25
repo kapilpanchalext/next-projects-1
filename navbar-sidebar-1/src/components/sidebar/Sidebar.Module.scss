@@ -38,3 +38,11 @@
     gap: 2rem;
   }
 }
+
+.sidebar__links a {
+  color: var(--link-primary);
+}
+
+.sidebar__links a:hover {
+  color: var(--link-primary-hover);
+}

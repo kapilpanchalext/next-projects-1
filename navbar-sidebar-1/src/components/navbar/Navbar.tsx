@@ -3,13 +3,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from "./Navbar.module.scss";
 import Link from 'next/link';
 import NavigationContext from '@/store/NavigationContext';
+import { useRouterPath } from '../hooks/useRouterPath';
 
 type Props = {}
 
 const Navbar = (props: Props) => {
   const { isTheme, toggleTheme, toggleSidebar } = useContext(NavigationContext);
   const [ isNavbarExtended, setIsNavbarExtended ] = useState<boolean>(false);
-  
+
+  const { isActive } = useRouterPath();
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 769 && isNavbarExtended) {
@@ -50,14 +53,14 @@ const Navbar = (props: Props) => {
         </div>
         
         <nav className={styles['navbar__links']}>
-          <Link href="/">Home</Link>
-          <Link href="/">Insert</Link>
-          <Link href="/">Design</Link>
-          <Link href="/">Layout</Link>
-          <Link href="/">References</Link>
-          <Link href="/">Mailings</Link>
-          <Link href="/">Review</Link>
-          <Link href="/">View</Link>
+          <Link href="/home" className={isActive('/home') ? styles.active : ''}>Home</Link>
+          <Link href="/insert" className={isActive('/insert') ? styles.active : ''}>Insert</Link>
+          <Link href="/design" className={isActive('/design') ? styles.active : ''}>Design</Link>
+          <Link href="/layout" className={isActive('/layout') ? styles.active : ''}>Layout</Link>
+          <Link href="/references" className={isActive('/references') ? styles.active : ''}>References</Link>
+          <Link href="/mailings" className={isActive('/mailings') ? styles.active : ''}>Mailings</Link>
+          <Link href="/review" className={isActive('/review') ? styles.active : ''}>Review</Link>
+          <Link href="/view" className={isActive('/view') ? styles.active : ''}>View</Link>
         </nav>
         <button className={styles['theme-button']} onClick={toggleTheme}>{toggleIconHandler()}</button>
         <button className={`${styles['menu-button']}`} onClick={openLinksMenuHandler}><span className={`material-symbols-outlined`}>menu</span></button>

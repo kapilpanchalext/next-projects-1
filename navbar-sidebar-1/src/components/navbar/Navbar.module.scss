@@ -62,6 +62,18 @@
   }
 }
 
+.navbar__links a {
+  color: var(--link-primary);
+}
+
+.navbar__links a:hover {
+  color: var(--link-primary-hover);
+}
+
+.navbar__links .active {
+  color: var(--link-primary-active);
+}
+
 .navbar__links {
   display: none;
 }

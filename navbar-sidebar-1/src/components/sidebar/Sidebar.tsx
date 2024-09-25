@@ -23,7 +23,7 @@ const Sidebar = (props: Props) => {
         <Link href="/">Export</Link>
         <Link href="/">Close</Link>
       </nav>
-    </aside>) 
+    </aside>)
     : 
     (<></>)
   )

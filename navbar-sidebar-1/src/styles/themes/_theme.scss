@@ -4,6 +4,9 @@
 @mixin light-theme {
   --text-primary: #{$neutral-950};
   --text-secondary: #{$neutral-900};
+  --link-primary: #{$primary-600};
+  --link-primary-hover: #{$primary-800};
+  --link-primary-active: #{$primary-800};
   --background-primary: #{$neutral-50};
   --background-secondary: white;
   --background-tertiary: #{$neutral-200};
@@ -13,6 +16,9 @@
 @mixin dark-theme {
   --text-primary: #{$neutral-50};
   --text-secondary: #{$neutral-100};
+  --link-primary: #{$primary-400};
+  --link-primary-hover: #{$primary-200};
+  --link-primary-active: #{$primary-200};
   --background-primary: #{$neutral-950};
   --background-secondary: #{$neutral-900};
   --background-tertiary: #{$neutral-800};
