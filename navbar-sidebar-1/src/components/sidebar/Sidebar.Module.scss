@@ -46,3 +46,8 @@
 .sidebar__links a:hover {
   color: var(--link-primary-hover);
 }
+
+.sidebar__links .active {
+  color: var(--link-primary-active);
+  font-size: x-large;
+}
