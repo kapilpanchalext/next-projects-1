@@ -1,5 +1,5 @@
-import * as react from 'react';
+import React from 'react';
 
-declare function HomeFramework(): react.JSX.Element;
+declare function HomeFramework(): React.JSX.Element;
 
 export { HomeFramework as default };

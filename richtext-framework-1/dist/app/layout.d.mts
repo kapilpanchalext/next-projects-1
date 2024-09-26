@@ -1,9 +1,9 @@
-import * as react from 'react';
 import { Metadata } from 'next';
+import React from 'react';
 
 declare const metadata: Metadata;
 declare function RootLayout({ children, }: Readonly<{
     children: React.ReactNode;
-}>): react.JSX.Element;
+}>): React.JSX.Element;
 
 export { RootLayout as default, metadata };

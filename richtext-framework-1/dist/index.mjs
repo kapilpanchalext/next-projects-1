@@ -1,6 +1,6 @@
 import {
   HomeFramework
-} from "./chunk-TVGJKOLM.mjs";
+} from "./chunk-A5PC25ZL.mjs";
 export {
   HomeFramework
 };
