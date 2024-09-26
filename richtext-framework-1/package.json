@@ -1,11 +1,16 @@
 {
-  "name": "richtext-framework-1",
-  "version": "1.0.0",
+  "name": "@kapilpanchal/richtext-framework-1",
+  "version": "1.0.3",
   "private": false,
-  "main": "./src/layout.tsx",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && tsup",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,6 +26,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "sass": "^1.79.3",
+    "tsup": "^8.3.0",
     "typescript": "^5"
   }
 }
