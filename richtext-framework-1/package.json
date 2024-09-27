@@ -1,12 +1,13 @@
 {
   "name": "@kapilpanchal/richtext-framework-1",
-  "version": "1.0.5",
+  "version": "1.0.19",
   "private": false,
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
+  "type": "module",
+  "allowJs": true,
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "exports": {
     ".": {
@@ -16,19 +17,28 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && tsup",
+    "build": "next build && rollup -c",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "copy-files": "node scripts/copy-css.js"
   },
   "dependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "autoprefixer": "^10.4.20",
+    "esbuild-css-modules-plugin": "^3.1.2",
     "next": "14.2.13",
+    "postcss": "^8.4.47",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.36.0"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild-plugin-css-modules": "^0.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "sass": "^1.79.3",
