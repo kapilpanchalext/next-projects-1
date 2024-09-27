@@ -1,10 +1,9 @@
 {
-  "name": "@kapilpanchal/richtext-framework-1",
-  "version": "1.0.23",
+  "name": "@kapilpanchal/helloworld-framework-1",
+  "version": "1.0.5",
   "private": false,
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "allowJs": true,
   "files": [
     "dist"
@@ -19,22 +18,15 @@
     "dev": "next dev",
     "build": "next build && tsup",
     "start": "next start",
-    "lint": "next lint",
-    "copy-files": "node scripts/copy-css.js"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@rollup/plugin-babel": "^6.0.4",
-    "autoprefixer": "^10.4.20",
-    "esbuild-css-modules-plugin": "^3.1.2",
+    "esbuild-sass-plugin": "^3.3.1",
     "next": "14.2.13",
-    "postcss": "^8.4.47",
     "react": "^18",
-    "react-dom": "^18",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.36.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

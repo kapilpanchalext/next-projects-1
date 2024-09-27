@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kapilpanchal/richtext-framework-1": "^1.0.18",
+    "@kapilpanchal/helloworld-framework-1": "^1.0.5",
+    "@kapilpanchal/richtext-framework-1": "^1.0.23",
+    "helloworld-framework-1": "^1.0.0",
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18"
