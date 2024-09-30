@@ -1,6 +1,6 @@
 {
   "name": "@kapilpanchal/helloworld-framework-1",
-  "version": "1.0.5",
+  "version": "1.0.15",
   "private": false,
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
@@ -12,7 +12,9 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
-    }
+    },
+    "./dist/index.css": "./dist/index.css",
+    "./dist/app.css": "./dist/app.css"
   },
   "scripts": {
     "dev": "next dev",
@@ -33,6 +35,8 @@
     "esbuild-plugin-css-modules": "^0.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
+    "postcss": "^8.4.47",
+    "postcss-modules": "^6.0.0",
     "sass": "^1.79.3",
     "tsup": "^8.3.0",
     "typescript": "^5"
