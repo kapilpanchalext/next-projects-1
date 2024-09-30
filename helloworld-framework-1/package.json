@@ -1,21 +1,20 @@
 {
   "name": "@kapilpanchal/helloworld-framework-1",
-  "version": "1.0.21",
+  "version": "1.0.44",
   "private": false,
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
+  "style": "dist/index.css",
   "allowJs": true,
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./dist/index.css": "./dist/index.css",
-    "./dist/globals.css": "./dist/globals.css",
-    "./dist/page.module.css": "./dist/page.module.css"
+    "./dist/index.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "next dev",
@@ -26,6 +25,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "esbuild-sass-plugin": "^3.3.1",
+    "fs-extra": "^11.2.0",
     "next": "14.2.13",
     "postcss-preset-env": "^10.0.5",
     "react": "^18",

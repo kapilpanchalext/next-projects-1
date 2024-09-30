@@ -180,12 +180,84 @@ export default defineConfig({
 * IT HAS ALL THE STYLES IN A SINGLE FILE
 */
 
+// import { defineConfig } from 'tsup';
+// import { sassPlugin } from 'esbuild-sass-plugin';
+// import postcssModules from 'postcss-modules';
+// import postcss from 'postcss';
+// import path from 'path';
+// import fs from 'fs';
+// import autoprefixer from 'autoprefixer';
+// import postcssPresetEnv from 'postcss-preset-env';
+
+// export default defineConfig({
+//   entry: ['src/index.ts'],
+//   outDir: './dist',
+//   format: ['cjs', 'esm'],
+//   minify: true,
+//   bundle: true,
+//   dts: true,
+//   sourcemap: true,
+//   clean: true,
+//   esbuildPlugins: [
+//     sassPlugin({
+//       // filter: /\.module\.scss$/,
+//       // transform: async (css, filePath) => {
+//       //   const processor = postcss([
+//       //     postcssModules({
+//       //       generateScopedName: '[local]',
+//       //       getJSON: (cssFileName, json) => {
+//       //         console.log("FILEPATH: ", filePath);
+//       //         console.log("CSS FILE NAME: ", css);
+//       //         console.log("JSON: ", json);
+//       //         const jsonFilePath = path.resolve('./dist', `${path.basename(cssFileName, '.scss')}.json`);
+//       //         console.log("PATH BASENAME: ", path.basename(cssFileName, '.scss'));
+//       //         console.log("JSON FILE PATH: ", jsonFilePath);
+//       //         const dir = path.dirname(jsonFilePath);
+//       //         console.log("DIR: ", dir);
+
+//       //         if (!fs.existsSync(dir)) {
+//       //           fs.mkdirSync(dir, { recursive: true });
+//       //         }
+
+//       //         fs.writeFileSync(jsonFilePath, JSON.stringify(json, null, 2));
+//       //       },
+//       //     }),
+//       //   ]);
+
+//       //   const result = await processor.process(css, { from: filePath });
+//       //   console.log("RESULT: ", result);
+//       //   const cssOutputPath = path.resolve('./dist', `${path.basename(filePath, '.scss')}.css`);
+//       //   console.log("CSS OUTPUT PATH: ", cssOutputPath);
+//       //   fs.writeFileSync(cssOutputPath, result.css);
+
+//       //   return {
+//       //     contents: result.css,
+//       //     loader: 'css',
+//       //   };
+//       // },
+//         async transform(source, resolveDir) {
+//           const {css} = await postcss([autoprefixer, postcssPresetEnv({stage: 0})]).process(source)
+//           return css
+//         }
+//     }),
+//     // sassPlugin({
+//     //   filter: /\.scss$/,
+//     // }),
+//   ],
+// });
+
+
+/* NEW CONFIGURATION - 6 .scss files WORKING WITH PARTIALLY APPLIED SCSS
+* npm install --save-dev postcss postcss-modules /* WORKING WITH THIS CONFIGURATION WIHOUT CSS 
+* IT HAS ALL THE STYLES IN A SINGLE FILE,
+* postcssModules({
+            exportGlobals: true,  // Add postcss-modules with global exports enabled
+          }), adds ._page_1xx2y_1 to the class
+*/
+
 import { defineConfig } from 'tsup';
 import { sassPlugin } from 'esbuild-sass-plugin';
-import postcssModules from 'postcss-modules';
 import postcss from 'postcss';
-import path from 'path';
-import fs from 'fs';
 import autoprefixer from 'autoprefixer';
 import postcssPresetEnv from 'postcss-preset-env';
 
@@ -196,52 +268,19 @@ export default defineConfig({
   minify: true,
   bundle: true,
   dts: true,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
   esbuildPlugins: [
     sassPlugin({
-      // filter: /\.module\.scss$/,
-      // transform: async (css, filePath) => {
-      //   const processor = postcss([
-      //     postcssModules({
-      //       generateScopedName: '[local]',
-      //       getJSON: (cssFileName, json) => {
-      //         console.log("FILEPATH: ", filePath);
-      //         console.log("CSS FILE NAME: ", css);
-      //         console.log("JSON: ", json);
-      //         const jsonFilePath = path.resolve('./dist', `${path.basename(cssFileName, '.scss')}.json`);
-      //         console.log("PATH BASENAME: ", path.basename(cssFileName, '.scss'));
-      //         console.log("JSON FILE PATH: ", jsonFilePath);
-      //         const dir = path.dirname(jsonFilePath);
-      //         console.log("DIR: ", dir);
-
-      //         if (!fs.existsSync(dir)) {
-      //           fs.mkdirSync(dir, { recursive: true });
-      //         }
-
-      //         fs.writeFileSync(jsonFilePath, JSON.stringify(json, null, 2));
-      //       },
-      //     }),
-      //   ]);
-
-      //   const result = await processor.process(css, { from: filePath });
-      //   console.log("RESULT: ", result);
-      //   const cssOutputPath = path.resolve('./dist', `${path.basename(filePath, '.scss')}.css`);
-      //   console.log("CSS OUTPUT PATH: ", cssOutputPath);
-      //   fs.writeFileSync(cssOutputPath, result.css);
-
-      //   return {
-      //     contents: result.css,
-      //     loader: 'css',
-      //   };
-      // },
-        async transform(source, resolveDir) {
-          const {css} = await postcss([autoprefixer, postcssPresetEnv({stage: 0})]).process(source)
-          return css
-        }
+      async transform(source, resolveDir) {
+        console.log("SOURCE: ", source);
+        console.log("RESOLVEDIR: ", resolveDir);
+        const {css} = await postcss([
+          autoprefixer,
+          postcssPresetEnv({stage: 0})]).process(source);
+        console.log("CSS: ", css);
+        return css;
+      }
     }),
-    // sassPlugin({
-    //   filter: /\.scss$/,
-    // }),
   ],
 });
