@@ -247,12 +247,42 @@ export default defineConfig({
 // });
 
 
+// export default defineConfig({
+//   entry: ['src/index.ts'],
+//   outDir: './dist',
+//   format: ['cjs', 'esm'],
+//   minify: true,
+//   bundle: true,
+//   dts: true,
+//   sourcemap: false,
+//   clean: true,
+//   esbuildPlugins: [
+//     sassPlugin({
+//       async transform(source, resolveDir) {
+//         console.log("SOURCE: ", source);
+//         console.log("RESOLVEDIR: ", resolveDir);
+//         const {css} = await postcss([
+//           autoprefixer,
+//           postcssPresetEnv({stage: 0})]).process(source);
+//         console.log("CSS: ", css);
+//         return css;
+//       }
+//     }),
+//   ],
+// });
+
+
 /* NEW CONFIGURATION - 6 .scss files WORKING WITH PARTIALLY APPLIED SCSS
 * npm install --save-dev postcss postcss-modules /* WORKING WITH THIS CONFIGURATION WIHOUT CSS 
 * IT HAS ALL THE STYLES IN A SINGLE FILE,
 * postcssModules({
             exportGlobals: true,  // Add postcss-modules with global exports enabled
           }), adds ._page_1xx2y_1 to the class
+  
+          1) esbuild- Error about the _next/static/app.....not solved - this file if present in the location
+          will make the styles to appear.
+          2) Removed format cjs and iife
+          3) sourcemap: 'inline', - makes all the styles to be available in the installation app
 */
 
 import { defineConfig } from 'tsup';
@@ -261,26 +291,32 @@ import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import postcssPresetEnv from 'postcss-preset-env';
 
-export default defineConfig({
+console.log('Current working directory:', process.cwd());
+
+const result = defineConfig({
   entry: ['src/index.ts'],
   outDir: './dist',
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   minify: true,
   bundle: true,
   dts: true,
-  sourcemap: false,
+  sourcemap: 'inline',
   clean: true,
+  metafile: true,
   esbuildPlugins: [
     sassPlugin({
       async transform(source, resolveDir) {
-        console.log("SOURCE: ", source);
+        // console.log("SOURCE: ", source);
         console.log("RESOLVEDIR: ", resolveDir);
         const {css} = await postcss([
           autoprefixer,
-          postcssPresetEnv({stage: 0})]).process(source);
-        console.log("CSS: ", css);
+          postcssPresetEnv({stage: 0})])
+          .process(source, { from: `${resolveDir}/globals.scss`});
+        // console.log("CSS: ", css);
         return css;
       }
     }),
   ],
 });
+console.log(result);
+export default result;

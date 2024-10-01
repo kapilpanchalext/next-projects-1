@@ -1,0 +1,33 @@
+import { defineConfig } from 'tsup';
+import { sassPlugin } from 'esbuild-sass-plugin';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
+
+const result = defineConfig({
+  entry: ['src/index.ts'],
+  outDir: './dist',
+  format: ['cjs', 'esm'],
+  minify: true,
+  bundle: true,
+  dts: true,
+  sourcemap: true,
+  clean: true,
+  esbuildPlugins: [
+    sassPlugin({
+      async transform(source, resolveDir) {
+        // console.log("SOURCE: ", source);
+        console.log("RESOLVEDIR: ", resolveDir);
+        const {css} = await postcss([
+          autoprefixer,
+          postcssPresetEnv({stage: 0})])
+          .process(source, { from: `${resolveDir}/globals.scss`});
+        // console.log("CSS: ", css);
+        return css;
+      }
+    }),
+  ],
+});
+
+console.log(result);
+export default result;
