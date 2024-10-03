@@ -6,9 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { stat } = require("fs");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    'hello-World': "./src/hello-world.js",
+    'image-file-1': "./src/image-file-main-1.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve("./dist"),
     publicPath: "",
     // clean: {
@@ -74,13 +77,24 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "styles.css",
+      filename: "[name].styles.css",
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      filename: 'hello-World.html',
       title: 'Hello World',
-      template: "src/index.hbs",
-      description: 'Some description',
+      chunks: ['hello-World'],
+      template: "src/page-template.hbs",
+      description: 'Hello World',
+      minify: false,
+    }),
+    new HtmlWebpackPlugin({
+      filename: "image-file-1.html",
+      title: 'Hello World',
+      chunks: ['image-file-1'],
+      template: "src/page-template.hbs",
+      description: 'Image File 1',
+      minify: false,
     })
   ]
 }

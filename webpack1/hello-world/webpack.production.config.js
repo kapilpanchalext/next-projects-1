@@ -9,20 +9,18 @@ module.exports = {
   entry: {
     'hello-World': "./src/hello-world.js",
     'image-file-1': "./src/image-file-main-1.js",
+    'index': "./src/index.js",
   },
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "[name].js",
     path: path.resolve("./dist"),
-    publicPath: "",
-    // clean: {
-    //   dry: true,
-    //   keep: /\.css/,
-    // },
+    publicPath: "/static/",
   },
   mode: "production",
   optimization: {
     splitChunks: {
       chunks: "all",
+      minSize: 3000,
     },
   },
   module: {
@@ -73,9 +71,17 @@ module.exports = {
   plugins: [
     new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename: "[name].css",
     }),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      title: 'Hello World',
+      chunks: ['index'],
+      template: "src/page-template.hbs",
+      description: 'Hello World',
+      minify: false,
+    }),
     new HtmlWebpackPlugin({
       filename: 'hello-World.html',
       title: 'Hello World',
@@ -86,7 +92,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: "image-file-1.html",
-      title: 'Hello World',
+      title: 'Image File 1',
       chunks: ['image-file-1'],
       template: "src/page-template.hbs",
       description: 'Image File 1',
@@ -94,9 +100,3 @@ module.exports = {
     })
   ]
 }
-
-// {
-//   cleanOnceBeforeBuildPatterns: ["**/*", 
-//     path.join(process.cwd(), "build/**/*")
-//   ],
-// }

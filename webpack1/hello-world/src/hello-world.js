@@ -1,11 +1,10 @@
 import HelloWorldButton from "./components/hello-world-button/hello-world-button.js";
 import Heading from "./components/heading/heading.js";
-import _ from "lodash";
-
+// import _ from "lodash";
 // import addImage from "./add-image.js";
 
 const heading = new Heading();
-heading.render(_.upperFirst("hello world page"));
+heading.render("hello world page");
 
 const button = new HelloWorldButton();
 button.render();
@@ -17,4 +16,4 @@ if(process.env.NODE_ENV === 'production') {
   console.log('Development Mode');
 }
 
-button.methodThatDoesNotExist();
+// button.methodThatDoesNotExist();
