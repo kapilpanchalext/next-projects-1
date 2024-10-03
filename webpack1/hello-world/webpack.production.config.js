@@ -8,8 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     'hello-World': "./src/hello-world.js",
-    'image-file-1': "./src/image-file-main-1.js",
-    'index': "./src/index.js",
+    // 'image-file-1': "./src/image-file-main-1.js",
+    // 'index': "./src/index.js",
   },
   output: {
     filename: "[name].js",
@@ -25,25 +25,25 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(png|jpg)$/,
-        type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxSize: 3 * 1024
-          }
-        }
-      }, 
-      {
-        test: /\.txt$/,
-        type: "asset/source",
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
-        ]
-      },
+      // {
+      //   test: /\.(png|jpg)$/,
+      //   type: "asset",
+      //   parser: {
+      //     dataUrlCondition: {
+      //       maxSize: 3 * 1024
+      //     }
+      //   }
+      // }, 
+      // {
+      //   test: /\.txt$/,
+      //   type: "asset/source",
+      // },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader, 'css-loader'
+      //   ]
+      // },
       {
         test: /\.scss$/,
         use: [
@@ -74,14 +74,14 @@ module.exports = {
       filename: "[name].css",
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      title: 'Hello World',
-      chunks: ['index'],
-      template: "src/page-template.hbs",
-      description: 'Hello World',
-      minify: false,
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   title: 'Hello World',
+    //   chunks: ['index'],
+    //   template: "src/page-template.hbs",
+    //   description: 'Hello World',
+    //   minify: false,
+    // }),
     new HtmlWebpackPlugin({
       filename: 'hello-World.html',
       title: 'Hello World',
@@ -90,13 +90,13 @@ module.exports = {
       description: 'Hello World',
       minify: false,
     }),
-    new HtmlWebpackPlugin({
-      filename: "image-file-1.html",
-      title: 'Image File 1',
-      chunks: ['image-file-1'],
-      template: "src/page-template.hbs",
-      description: 'Image File 1',
-      minify: false,
-    })
+    // new HtmlWebpackPlugin({
+    //   filename: "image-file-1.html",
+    //   title: 'Image File 1',
+    //   chunks: ['image-file-1'],
+    //   template: "src/page-template.hbs",
+    //   description: 'Image File 1',
+    //   minify: false,
+    // })
   ]
 }

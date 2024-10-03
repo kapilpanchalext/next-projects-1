@@ -3,12 +3,12 @@ const loader = require("sass-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { stat } = require("fs");
+const { fs } = require("fs");
 
 module.exports = {
   entry: {
-    'hello-World': "./src/hello-world.js",
-    // 'image-file-1': "./src/image-file-main-1.js",
+    // 'hello-World': "./src/hello-world.js",
+    'image-file-1': "./src/image-file-main-1.js",
   },
   output: {
     filename: "[name].bundle.js",
@@ -21,26 +21,26 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    port: 9001,
+    port: 9002,
     static: {
       directory: path.resolve("./dist"),
     },
     devMiddleware: {
-      index: "hello-world.html",
+      index: "image-file-1.html",
       writeToDisk: true,
     }
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(png|jpg)$/,
-      //   type: "asset",
-      //   parser: {
-      //     dataUrlCondition: {
-      //       maxSize: 3 * 1024
-      //     }
-      //   }
-      // }, 
+      {
+        test: /\.(png|jpg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 3 * 1024
+          }
+        }
+      }, 
       // {
       //   test: /\.txt$/,
       //   type: "asset/source",
@@ -64,7 +64,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [ '@babel/env' ],
-            plugins: [ "@babel/plugin-transform-class-properties" ]
+            // plugins: [ "@babel/plugin-transform-class-properties" ]
           }
         }
       },
@@ -80,22 +80,22 @@ module.exports = {
       filename: "[name].styles.css",
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'hello-World.html',
-      title: 'Hello World',
-      chunks: ['hello-World'],
-      template: "src/page-template.hbs",
-      description: 'Hello World',
-      minify: false,
-    }),
     // new HtmlWebpackPlugin({
-    //   filename: "image-file-1.html",
+    //   filename: 'hello-World.html',
     //   title: 'Hello World',
-    //   chunks: ['image-file-1'],
+    //   chunks: ['hello-World'],
     //   template: "src/page-template.hbs",
-    //   description: 'Image File 1',
+    //   description: 'Hello World',
     //   minify: false,
-    // })
+    // }),
+    new HtmlWebpackPlugin({
+      filename: "image-file-1.html",
+      title: 'Hello World',
+      // chunks: ['image-file-1'],
+      template: "src/page-template.hbs",
+      description: 'Image File 1',
+      minify: false,
+    })
   ]
 }
 

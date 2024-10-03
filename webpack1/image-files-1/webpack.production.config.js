@@ -1,46 +1,39 @@
 const path = require("path");
 const loader = require("sass-loader");
+const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { stat } = require("fs");
 
 module.exports = {
   entry: {
-    'hello-World': "./src/hello-world.js",
-    // 'image-file-1': "./src/image-file-main-1.js",
+    // 'hello-World': "./src/hello-world.js",
+    'image-file-1': "./src/image-file-main-1.js",
+    // 'index': "./src/index.js",
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].js",
     path: path.resolve("./dist"),
-    publicPath: "",
-    // clean: {
-    //   dry: true,
-    //   keep: /\.css/,
-    // },
+    publicPath: "/static/",
   },
-  mode: "development",
-  devServer: {
-    port: 9001,
-    static: {
-      directory: path.resolve("./dist"),
+  mode: "production",
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 9002,
     },
-    devMiddleware: {
-      index: "hello-world.html",
-      writeToDisk: true,
-    }
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(png|jpg)$/,
-      //   type: "asset",
-      //   parser: {
-      //     dataUrlCondition: {
-      //       maxSize: 3 * 1024
-      //     }
-      //   }
-      // }, 
+      {
+        test: /\.(png|jpg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 3 * 1024
+          }
+        }
+      }, 
       // {
       //   test: /\.txt$/,
       //   type: "asset/source",
@@ -64,7 +57,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [ '@babel/env' ],
-            plugins: [ "@babel/plugin-transform-class-properties" ]
+            // plugins: [ "@babel/plugin-transform-class-properties" ]
           }
         }
       },
@@ -76,31 +69,34 @@ module.exports = {
     ],
   },
   plugins: [
+    new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].styles.css",
+      filename: "[name].css",
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'hello-World.html',
-      title: 'Hello World',
-      chunks: ['hello-World'],
-      template: "src/page-template.hbs",
-      description: 'Hello World',
-      minify: false,
-    }),
     // new HtmlWebpackPlugin({
-    //   filename: "image-file-1.html",
+    //   filename: 'index.html',
     //   title: 'Hello World',
-    //   chunks: ['image-file-1'],
+    //   chunks: ['index'],
     //   template: "src/page-template.hbs",
-    //   description: 'Image File 1',
+    //   description: 'Hello World',
     //   minify: false,
-    // })
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'hello-World.html',
+    //   title: 'Hello World',
+    //   chunks: ['hello-World'],
+    //   template: "src/page-template.hbs",
+    //   description: 'Hello World',
+    //   minify: false,
+    // }),
+    new HtmlWebpackPlugin({
+      filename: "image-file-1.html",
+      title: 'Image File 1',
+      // chunks: ['image-file-1'],
+      template: "src/page-template.hbs",
+      description: 'Image File 1',
+      minify: false,
+    })
   ]
 }
-
-// {
-//   cleanOnceBeforeBuildPatterns: ["**/*", 
-//     path.join(process.cwd(), "build/**/*")
-//   ],
-// }
