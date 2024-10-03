@@ -4,6 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   entry: {
@@ -14,7 +15,7 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve("./dist"),
-    publicPath: "/static/",
+    publicPath: "http://localhost:9002/",
   },
   mode: "production",
   optimization: {
@@ -97,6 +98,17 @@ module.exports = {
       template: "src/page-template.hbs",
       description: 'Image File 1',
       minify: false,
-    })
+    }),
+    new ModuleFederationPlugin({
+      // name: "Image File 1",
+      // remotes: {
+      //   HelloWorldApp: "HelloWorldApp@http://localhost:9001/remoteEntry.js",
+      // }
+      name: "Image File 1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./ImageFilePage": "./src/components/image-file-page/image-file-page.js",
+      },
+    }),
   ]
 }

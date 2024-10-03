@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { fs } = require("fs");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   entry: {
@@ -13,7 +14,7 @@ module.exports = {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve("./dist"),
-    publicPath: "",
+    publicPath: "http://localhost:9002/",
     // clean: {
     //   dry: true,
     //   keep: /\.css/,
@@ -95,7 +96,17 @@ module.exports = {
       template: "src/page-template.hbs",
       description: 'Image File 1',
       minify: false,
-    })
+    }),
+    new ModuleFederationPlugin({
+      name: "Image File 1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./ImageFilePage": "./src/components/image-file-page/image-file-page.js",
+      },
+      // remotes: {
+      //   HelloWorldApp: "HelloWorldApp@http://localhost:9001/remoteEntry.js",
+      // }
+    }),
   ]
 }
 

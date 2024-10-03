@@ -6,3 +6,9 @@ heading.render("image file 1 page");
 
 const imageFile1 = new ImageFile1();
 imageFile1.render();
+
+// import("HelloWorldApp/HelloWorldButton").then(HelloWorldButtonModule => {
+//   const HelloWorldButton = HelloWorldButtonModule.default;
+//   const helloWorldButton = new HelloWorldButton();
+//     helloWorldButton.render();
+// });

@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 
-app.use("/static", express.static(path.resolve("./dist")));
+app.use("/", express.static(path.resolve("./dist")));
 
 // app.get("/hello-world", function (req, res) {
 //   const pathToHtmlFile = path.resolve("./dist/hello-world.html");
