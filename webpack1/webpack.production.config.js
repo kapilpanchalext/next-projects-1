@@ -3,15 +3,28 @@ const loader = require("sass-loader");
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  output: {
-    filename: "bundle.[contenthash].js",
-    path: path.resolve("./dist"),
-    publicPath: "dist/"
+  entry: {
+    'hello-World': "./src/hello-world.js",
+    'image-file-1': "./src/image-file-main-1.js",
   },
-  mode: "none",
+  output: {
+    filename: "[name].[contenthash].js",
+    path: path.resolve("./dist"),
+    publicPath: "",
+    // clean: {
+    //   dry: true,
+    //   keep: /\.css/,
+    // },
+  },
+  mode: "production",
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   module: {
     rules: [
       {
@@ -49,18 +62,41 @@ module.exports = {
             plugins: [ "@babel/plugin-transform-class-properties" ]
           }
         }
+      },
+      {
+        test: /\.hbs$/,
+        exclude: /node_modules/,
+        use: ["handlebars-loader"]
       }
     ],
   },
   plugins: [
     new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: "styles.[contenthash].css",
+      filename: "[name].[contenthash].css",
     }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/*", 
-        path.join(process.cwd(), "build/**/*")
-      ],
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'hello-World.html',
+      title: 'Hello World',
+      chunks: ['hello-World'],
+      template: "src/page-template.hbs",
+      description: 'Hello World',
+      minify: false,
     }),
+    new HtmlWebpackPlugin({
+      filename: "image-file-1.html",
+      title: 'Hello World',
+      chunks: ['image-file-1'],
+      template: "src/page-template.hbs",
+      description: 'Image File 1',
+      minify: false,
+    })
   ]
 }
+
+// {
+//   cleanOnceBeforeBuildPatterns: ["**/*", 
+//     path.join(process.cwd(), "build/**/*")
+//   ],
+// }
