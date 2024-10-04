@@ -6,7 +6,7 @@ const fs = require('fs');
 app.use("/", express.static(path.resolve("./dist")));
 
 app.get("*", function (req, res) {
-  const pathToHtmlFile = path.resolve("../dist/dashboard.html");
+  const pathToHtmlFile = path.resolve("./dist/dashboard.html");
   const contentFromHtmlFile = fs.readFileSync(pathToHtmlFile, "utf-8");
   res.send(contentFromHtmlFile);
 });

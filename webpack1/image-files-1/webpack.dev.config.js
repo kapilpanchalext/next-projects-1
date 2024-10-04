@@ -98,10 +98,10 @@ module.exports = {
       minify: false,
     }),
     new ModuleFederationPlugin({
-      name: "Image File 1",
+      name: "ImageFileApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./ImageFilePage": "./src/components/image-file-page/image-file-page.js",
+        "./ImageFileApp": "./src/components/image-file-page/image-file-page.js",
       },
       // remotes: {
       //   HelloWorldApp: "HelloWorldApp@http://localhost:9001/remoteEntry.js",
