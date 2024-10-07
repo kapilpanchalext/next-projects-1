@@ -1,7 +1,7 @@
 {
   "name": "@kapilpanchal/helloworld-framework-3",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.2",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "webpack --config webpack.production.config.js",

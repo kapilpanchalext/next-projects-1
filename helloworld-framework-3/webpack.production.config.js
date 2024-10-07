@@ -9,22 +9,38 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve('./dist'),
   },
-  mode: 'none',
-resolve: {
+  mode: 'production',
+  resolve: {
     extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
+        exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
         ]
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: [
-          'style-loader', 'css-loader', 'sass-loader'
+          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
         ]
       },
       {
@@ -53,6 +69,11 @@ resolve: {
           'handlebars-loader'
         ]
       }
-    ]
+    ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
 }
