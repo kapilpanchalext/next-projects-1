@@ -1,6 +1,6 @@
 "use client";
-// import  { HomeFramework } from "@kapilpanchal/helloworld-framework-1";
-// import "@kapilpanchal/helloworld-framework-1/dist/index.css";
+
+import { HelloWorldFramework } from "@kapilpanchal/helloworld-framework-2";
 
 export default function Home() {
   return (

@@ -1,7 +1,12 @@
 {
-  "name": "helloworld-framework-2",
-  "version": "1.0.0",
-  "private": true,
+  "name": "@kapilpanchal/helloworld-framework-2",
+  "version": "1.0.2",
+  "private": false,
+  "main": "./dist/index.bundle.js",
+  "module": "dist/index.bundle.esm.js",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "webpack --config webpack.production.config.js",
@@ -18,9 +23,11 @@
     "@babel/preset-env": "^7.25.7",
     "@babel/preset-react": "^7.25.7",
     "@babel/preset-typescript": "^7.25.7",
-    "@types/node": "^20",
+    "@types/node": "^20.16.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.2",
     "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
@@ -33,7 +40,9 @@
     "sass": "^1.79.4",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
-    "typescript": "^5",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"

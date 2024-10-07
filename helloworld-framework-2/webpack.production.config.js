@@ -11,9 +11,14 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve('./dist'),
-    publicPath: ''
+    publicPath: '',
+    libraryTarget: 'umd',  // Universal Module Definition
+    globalObject: 'this',  // For Node.js and browser compatibility
   },
-  mode: 'development',
+  externals: {
+    react: 'react', // Ensuring React is treated as a peer dependency
+  },
+  mode: 'production',
   module: {
     rules: [
       {

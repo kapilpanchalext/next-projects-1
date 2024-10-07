@@ -9,4 +9,6 @@ image-caption-1/
 helloworld-framework-1/node_modules
 helloworld-framework-1/dist
 helloworld-framework-2/node_modules
-helloworld-framework-2/dist
+helloworld-framework-2/
+helloworld-framework-3/node_modules
+helloworld-framework-3/dist
