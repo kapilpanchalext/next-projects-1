@@ -11,6 +11,7 @@
   "dependencies": {
     "@kapilpanchal/helloworld-framework-1": "^1.0.56",
     "helloworld-framework-1": "^1.0.0",
+    "helloworld-framework-2": "file:../helloworld-framework-2",
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18"
