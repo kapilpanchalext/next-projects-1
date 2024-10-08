@@ -11,68 +11,59 @@ module.exports = {
   },
   mode: 'development',
   resolve: {
-    extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.html'],
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + "/";
-              },
-            },
-            options: {
-              esModule: true,
               modules: {
                 namedExport: true,
-                localIdentName: "[name]__[contenthash]__[local]",
+                localIdentName: "[name]__[contenthash]--[local]",
               },
               importLoaders: 1,
+              esModule: true,
             },
           },
         ],
-        include: /\.module\.css$/,
       },
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
         exclude: /\.module\.css$/,
       },
       {
-        test: /\.scss$/,
+        test: /\.module\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + "/";
-              },
-            },
-            options: {
-              esModule: true,
               modules: {
                 namedExport: true,
-                localIdentName: "[name]__[contenthash]__[local]",    
+                localIdentName: "[name]__[contenthash]--[local]",
               },
               importLoaders: 1,
+              esModule: true,
             },
           },
-          'sass-loader'
+          'sass-loader',
         ],
-        include: /\.module\.scss$/,
       },
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
         ],
         exclude: /\.module\.scss$/,
       },
@@ -81,23 +72,27 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/env', '@babel/typescript', '@babel/preset-react' ],
-          }
-        }
+            presets: ['@babel/env', '@babel/typescript', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.tsx$/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/env', '@babel/typescript', '@babel/preset-react' ],
-          }
-        }
+            presets: ['@babel/env', '@babel/typescript', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
       },
     ],
   },
@@ -108,8 +103,6 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'HelloWorld Framework 3',
-      description: 'HelloWorld Framework 3',
-    })
+    }),
   ],
-}
+};
