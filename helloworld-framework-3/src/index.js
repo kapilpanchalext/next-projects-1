@@ -1,5 +1,7 @@
 import "./app/globals.scss";
-import "./app/page.module.scss";
 
-import HomeWorldFramework from "./app/page";
-export { HomeWorldFramework };
+import RootLayout from "./app/layout";
+export { RootLayout };
+
+import HelloWorldFramework from "./app/page";
+export { HelloWorldFramework };

@@ -1,10 +1,10 @@
 {
   "name": "@kapilpanchal/helloworld-framework-3",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "webpack --config webpack.production.config.js",
+    "build": "webpack --config webpack.production.config.js --stats detailed",
     "start": "next start",
     "lint": "next lint"
   },

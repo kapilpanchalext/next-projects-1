@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kapilpanchal/helloworld-framework-3": "^1.0.1",
+    "@kapilpanchal/helloworld-framework-3": "^1.0.5",
     "helloworld-framework-1": "^1.0.0",
     "helloworld-framework-2": "file:../helloworld-framework-2",
     "next": "14.2.12",
