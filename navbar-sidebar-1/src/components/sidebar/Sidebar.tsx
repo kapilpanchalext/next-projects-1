@@ -6,9 +6,7 @@ import NavigationContext from '@/store/NavigationContext';
 import Link from 'next/link';
 import { useRouterPath } from '../hooks/useRouterPath';
 
-type Props = {}
-
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
   const { isSideBarExpanded } = useContext(NavigationContext);
   const { isActive } = useRouterPath();
 

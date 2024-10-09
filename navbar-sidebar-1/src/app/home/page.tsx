@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import HelloworldFramework5 from "@kapilpanchal/helloworld-framework-5/src/app/page";
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
   return (
-    <div>Home</div>
+    <HelloworldFramework5 />
   )
 }
 

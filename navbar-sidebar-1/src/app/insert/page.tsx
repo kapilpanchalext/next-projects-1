@@ -1,8 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
-
-const Insert = (props: Props) => {
+const Insert = () => {
   return (
     <div>Insert</div>
   )

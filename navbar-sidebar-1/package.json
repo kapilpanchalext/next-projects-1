@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@kapilpanchal/helloworld-framework-4": "^1.0.3",
+    "@kapilpanchal/helloworld-framework-5": "^1.0.1",
     "helloworld-framework-1": "^1.0.0",
     "helloworld-framework-2": "file:../helloworld-framework-2",
     "next": "14.2.12",

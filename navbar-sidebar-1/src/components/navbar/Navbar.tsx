@@ -6,9 +6,7 @@ import Link from 'next/link';
 import NavigationContext from '@/store/NavigationContext';
 import { useRouterPath } from '../hooks/useRouterPath';
 
-type Props = {}
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const { isTheme, toggleTheme, toggleSidebar } = useContext(NavigationContext);
   const [ isNavbarExtended, setIsNavbarExtended ] = useState<boolean>(false);
 

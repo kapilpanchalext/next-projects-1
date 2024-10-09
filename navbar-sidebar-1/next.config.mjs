@@ -3,23 +3,22 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 /** @type {import('next').NextConfig} */
-const nextConfig = transpileModules(['@kapilpanchal/helloworld-framework-4'])({
+const nextConfig = transpileModules(['@kapilpanchal/helloworld-framework-4', 
+  '@kapilpanchal/helloworld-framework-5'])({
   
   webpack: (config) => {
-    // Add custom loader for .tsx files
     config.module.rules.push({
-      test: /\.tsx?$/, // For .ts and .tsx files
+      test: /\.tsx?$/,
       use: [
         {
           loader: 'babel-loader',
           options: {
-            presets: ['next/babel'], // Use Next.js Babel preset
+            presets: ['next/babel'],
           },
         },
       ],
     });
 
-    // Add custom loader for .scss files
     config.module.rules.push({
       test: /\.css$/,
       use: [
@@ -85,14 +84,12 @@ const nextConfig = transpileModules(['@kapilpanchal/helloworld-framework-4'])({
         exclude: /\.module\.scss$/,
     });
 
-    // Add MiniCssExtractPlugin to the Webpack plugins array
     config.plugins.push(
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash].css',
         chunkFilename: 'static/css/[id].[contenthash].css',
       })
     );
-
     return config;
   },
 });
