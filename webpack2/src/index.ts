@@ -11,8 +11,8 @@ if (h1Element) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed'); // Log when DOM is ready
-  HelloWorld(); // Call the HelloWorld function
+  console.log('DOM fully loaded and parsed');
+  HelloWorld();
 });
 
 const hello: string = "Hello, World Webpack2!";
