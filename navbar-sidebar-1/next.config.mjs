@@ -33,7 +33,7 @@ const nextConfig = ({
           options: {
             modules: {
               namedExport: false,
-              localIdentName: "[name]__[contenthash]__[local]",
+              localIdentName: "[name]__[hash:base64:5]__[local]",
             },
             importLoaders: 1,
           },
@@ -64,7 +64,7 @@ const nextConfig = ({
           options: {
             modules: {
               namedExport: false,
-              localIdentName: "[name]__[contenthash]__[local]",    
+              localIdentName: "[name]__[hash:base64:5]__[local]",    
             },
             importLoaders: 1,
           },
