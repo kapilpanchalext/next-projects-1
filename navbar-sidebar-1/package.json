@@ -1,6 +1,6 @@
 {
   "name": "navbar-sidebar-1",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,9 +10,8 @@
   },
   "dependencies": {
     "@kapilpanchal/helloworld-framework-4": "^1.0.3",
-    "@kapilpanchal/helloworld-framework-5": "^1.0.1",
-    "helloworld-framework-1": "^1.0.0",
-    "helloworld-framework-2": "file:../helloworld-framework-2",
+    "@kapilpanchal/helloworld-framework-5": "^1.0.2",
+    "@next/bundle-analyzer": "^14.2.15",
     "next": "14.2.12",
     "next-transpile-modules": "^10.0.1",
     "react": "^18",
@@ -38,6 +37,7 @@
     "style-loader": "^4.0.0",
     "typescript": "^5",
     "webpack": "^5.95.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   }

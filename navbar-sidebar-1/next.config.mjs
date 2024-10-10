@@ -1,11 +1,11 @@
-import transpileModules from 'next-transpile-modules';
+// import transpileModules from 'next-transpile-modules';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 /** @type {import('next').NextConfig} */
-const nextConfig = transpileModules(['@kapilpanchal/helloworld-framework-4', 
-  '@kapilpanchal/helloworld-framework-5'])({
-  
+const nextConfig = ({
   webpack: (config) => {
     config.module.rules.push({
       test: /\.tsx?$/,
@@ -88,7 +88,14 @@ const nextConfig = transpileModules(['@kapilpanchal/helloworld-framework-4',
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash].css',
         chunkFilename: 'static/css/[id].[contenthash].css',
-      })
+        ignoreOrder: true,
+      }),
+      new CleanWebpackPlugin(),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'server',
+      //   generateStatsFile: true,
+      //   statsOptions: { source: false }
+      // }),
     );
     return config;
   },
