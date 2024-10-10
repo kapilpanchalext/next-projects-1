@@ -31,9 +31,8 @@ const nextConfig = ({
             },
           },
           options: {
-            esModule: true,
             modules: {
-              namedExport: true,
+              namedExport: false,
               localIdentName: "[name]__[contenthash]__[local]",
             },
             importLoaders: 1,
@@ -63,9 +62,8 @@ const nextConfig = ({
             },
           },
           options: {
-            esModule: true,
             modules: {
-              namedExport: true,
+              namedExport: false,
               localIdentName: "[name]__[contenthash]__[local]",    
             },
             importLoaders: 1,

@@ -1,7 +1,6 @@
 "use client"
 import React, { useContext } from 'react';
-// import styles from "./Sidebar.module.scss";
-import * as styles from './Sidebar.module.scss';
+import styles from "./Sidebar.module.scss";
 import NavigationContext from '@/store/NavigationContext';
 import Link from 'next/link';
 import { useRouterPath } from '../hooks/useRouterPath';
