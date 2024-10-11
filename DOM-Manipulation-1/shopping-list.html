@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      margin-bottom: 5px;
+    }
+    
+    li {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+
+    const shoppingList = document.createElement('h1');
+    const body = document.querySelector('body');
+
+    const para = document.createElement('p');
+    para.textContent = 'Enter a New Item: ';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'item';
+    input.placeholder = 'Add a New Item';
+
+    const button = document.createElement('button');
+    button.textContent = 'Add Item';
+
+    button.onclick = function() {
+      const item = document.querySelector('#item').value;
+      const li = document.createElement('li');
+      const deleteButton = document.createElement('button');
+      const unorderedList = document.querySelector('ul');
+      const spanItems = document.createElement('span');
+      deleteButton.textContent = 'Delete';
+      spanItems.setAttribute("class", "highlight");      
+      li.textContent = item;
+      spanItems.appendChild(li);
+      spanItems.appendChild(deleteButton);
+      unorderedList.appendChild(spanItems);
+      
+      deleteButton.onclick = function() {
+        spanItems.removeChild(li);
+        spanItems.removeChild(deleteButton);
+      };
+    };
+
+    shoppingList.textContent = 'Shopping List';
+    para.appendChild(input);
+    body.appendChild(shoppingList);
+    body.appendChild(para);
+    para.appendChild(button);
+    body.appendChild(document.createElement('ul'));
+
+  </script>
+</body>
+</html>
